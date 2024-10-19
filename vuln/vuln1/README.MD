@@ -1,4 +1,3 @@
-Describe vuln1
 # 20241011 - Information Leakage
 
 ## 1. **Overview**
