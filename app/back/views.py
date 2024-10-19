@@ -26,6 +26,9 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+
+from django.contrib.auth.hashers import make_password
+
 @login_required(login_url='signin')
 def index(request):
     form = liker(request.POST or None,request.FILES or None)
@@ -69,9 +72,6 @@ def index(request):
     
     
     feedlist=list(chain(*feed))
-    
-    
-    
 
     #  user sugg
     alll=User.objects.all()
@@ -109,8 +109,6 @@ def index(request):
     ppp=Profile.objects.get(id_user=uuu.id)
     userfpdata.append(ppp)
     
-    
-
     # postuserdata=list(chain(*userfpdata))
     # print(userfpdata)     
     #    
@@ -135,34 +133,38 @@ def index(request):
     
     
     return render(request,'home.html',{'user_profile':user_profile,'posts':newfeed,'lsugg':lsugg[:4],'form':form,'postuserdata':userfpdata,'user_following':user_following2,'user_followers':user_followers2,'noofposts':noofposts,'likedpostsid':likedpostsid})
- 
+
+
 def signup(request): 
-    if request.method=='POST':
-        email=request.POST['email']
-        username=request.POST['username']
-        password=request.POST['password']
-        password2=request.POST['cpassword']
-        
-      
+    if request.method == 'POST':
+        email = request.POST['email']
+        username = request.POST['username']
+        password = request.POST['password']
+        password2 = request.POST['cpassword']
         
         if User.objects.filter(email=email).exists():
-            messages.info(request,'Email already registred')
-            return redirect('signup')   
+            messages.info(request, 'Email already registered')
+            return redirect('signup')
         elif User.objects.filter(username=username).exists():
-            messages.info(request,'Username already registred')
-            return redirect('signup') 
-        elif password!=password2:
-            messages.info(request,'Passwords are not matching')
-            return redirect('signup') 
+            messages.info(request, 'Username already registered')
+            return redirect('signup')
+        elif password != password2:
+            messages.info(request, 'Passwords do not match')
+            return redirect('signup')
         else:
-            user=User.objects.create_user(username=username,email=email,password=password)
-            user.save()
+            # Check if the password already exists for any user
+            for user in User.objects.all():
+                if user.check_password(password):  # Compare with existing hashed passwords
+                    messages.info(request, f'User {user.username} already has that password')
+                    return redirect('signup')
             
-            # login redirect to settings
-            user_login=auth.authenticate(username=username,password=password)
-            auth.login(request,user_login)
-            # profile
+            # If no user has the password, proceed to create the new user
+            user = User.objects.create_user(username=username, email=email, password=password)
+            user.save()
 
+            # Login the user after successful registration
+            user_login = auth.authenticate(username=username, password=password)
+            auth.login(request,user_login)
             user_model=User.objects.get(username=username)
             new_profile=Profile.objects.create(user=user_model,id_user=user_model.id)
             new_profile.mail_verification=True
@@ -170,7 +172,8 @@ def signup(request):
 #           return redirect('/mail_verification') 
             return redirect('/') 
 
-    return render(request,'signup.html')  
+    return render(request, 'signup.html')
+
 
 @login_required(login_url='signin')
 def signup_verification(request):
@@ -267,34 +270,35 @@ def tempp(request):
     return render(request, 'crop.html', context)
    
 
-
-
+# Login view
 def signin(request):
-    if request.method=='POST':
-        username=request.POST['username']
-        password=request.POST['password'] 
-        
-        user=auth.authenticate(username=username,password=password)
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
 
-        if user is not None:
-            auth.login(request,user)
-            user_profile=Profile.objects.get(user=request.user)
-            return redirect('/')
-           
-        else:
-            messages.info(request,'Check username or Password')
+        # Check if the username exists
+        user_exists = User.objects.filter(username=username).exists()
+
+        if not user_exists:
+            messages.info(request, 'Check username or Password')
             return redirect('signin')
 
-    
-    return render(request,'signin.html')  
+        # Authenticate user
+        user = auth.authenticate(username=username, password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            return redirect('/')
+        else:
+            # Username exists, but wrong password
+            messages.info(request, 'Password is incorrect')
+            return redirect('signin')
+    return render(request, 'signin.html')
 
 @login_required(login_url='signin')
 def signout(request):
     auth.logout(request)
     return redirect('signin')
-
-
-
 
 @login_required(login_url='signin')
 def upload(request):
@@ -318,9 +322,6 @@ def psettings(request):
     if user_profile.mail_verification == False:
         return redirect('/mail_verification')
     
-    
-    
-
     if request.method=='POST':
         bio=request.POST['bio']
         fname=request.POST['fname']
@@ -345,7 +346,6 @@ def psettings(request):
 
 
     return render(request,'psetting.html',{'user_profile':user_profile}) 
-
 
 @login_required(login_url='signin') 
 def profile(request,pk):
@@ -477,11 +477,6 @@ def search(request):
 def crop(request):
     return render(request,'crop.html')
 
-
-
-
-
-
 def cover(request):
     # photos = Photo.objects.all()
     form = ImageForm(request.POST or None,request.FILES or None)
@@ -577,8 +572,6 @@ def chat(request):
             portlist.append(p.reci)
         elif str(p.reci) == str(request.user):
             portlist.append(p.sender)
-
-    
         
     portlist.reverse()
     username=[]
@@ -598,7 +591,6 @@ def chat(request):
 
     
     return render(request,'chathere.html',{'userown':user_own,'usplist':usplist,'user_profile':user_profile,'allprof':allprof})
-   
 
 @login_required(login_url='signin')
 def chatroom(request,pk):
@@ -806,3 +798,17 @@ def changepass(request):
             return JsonResponse({'passchange':False,'message':'Password are not matching'})
 
     return redirect('/forgotpass')
+
+def security(request):
+    
+    # Define the vulnerabilities
+    vulnerabilities = {
+        "Vulnerabilities": 
+        [
+            "20241011 - Information Leakage"
+        ]
+        }
+
+    message = "This application is totally secure!"
+
+    return render(request, 'security.html', {'message': message, 'vulnerabilities': vulnerabilities})
