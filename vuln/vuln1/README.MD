@@ -29,7 +29,7 @@
       - Try to log in with a username `johndoe` and an invalid password.
       - If the message is `Password is incorrect`, the attacker knows the username is valid, and they can focus on cracking the password.
 
-## References
+## 4. References
 
    * https://owasp.org/www-project-top-10-infrastructure-security-risks/docs/2023/INT08_2023-Information_Leakage
 
