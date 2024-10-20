@@ -1,6 +1,12 @@
 FROM python:3.11
 
+RUN apt update && apt install nginx -y
+COPY deploy/nginx/default /etc/nginx/sites-enabled/
+RUN pip install --no-cache-dir uvicorn
+
 WORKDIR /app
+
+COPY deploy/entry.sh /app
 
 COPY app/ .
 
@@ -10,6 +16,6 @@ RUN chown -R root:root /app/database
 RUN python manage.py makemigrations
 RUN python manage.py migrate
 
-EXPOSE 8080
+EXPOSE 80
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+CMD ["/bin/bash", "/app/entry.sh"]
