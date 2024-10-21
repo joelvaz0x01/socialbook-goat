@@ -20,3 +20,4 @@ env/
 sclone/venv/
 sclone/env/
 sclone/.vscode
+venv/
