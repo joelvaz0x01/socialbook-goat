@@ -1,14 +1,8 @@
-from ast import Pass
-from distutils.command.upload import upload
-from email.policy import default
-from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth import get_user_model
 import uuid
-from io import BytesIO
 # from pil import Im
 # imp
-from django.core.files import File
 
 from datetime import date, datetime
 

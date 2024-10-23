@@ -1,21 +1,13 @@
 from cProfile import Profile
-from email.mime import image, message
 from http.client import HTTPResponse
-from imaplib import _Authenticator
-import imp
 from itertools import chain
-import json,requests
 from random import randint
-from operator import contains
 import random
-from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string 
 from django.utils.html import strip_tags
 from django.conf import settings
 
-from io import BytesIO
-from django.core.files import File
 from django.http import JsonResponse
 
 from .forms import ImageForm,liker
@@ -25,9 +17,9 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db import connection
 
 
-from django.contrib.auth.hashers import make_password
 
 @login_required(login_url='signin')
 def index(request):
@@ -594,13 +586,18 @@ def chat(request):
 
 @login_required(login_url='signin')
 def chatroom(request,pk):
+    #do it here
     user_object=User.objects.get(username=request.user.username)
     user_profile=Profile.objects.get(user=user_object)
     
     if user_profile.mail_verification == False:
         return redirect('/mail_verification')
     reci=pk
-    pk2=User.objects.get(username=pk)
+
+    with connection.cursor() as cursor:
+        cursor.execute( "SELECT * FROM auth_user WHERE username = '" + pk + "';")
+        row = cursor.fetchone()
+        pk2 = User.objects.get(id=row[0])
     pk_profile=Profile.objects.get(user=pk2)
 
     sender=User.objects.get(username=request.user)
