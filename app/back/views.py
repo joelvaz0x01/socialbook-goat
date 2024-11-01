@@ -597,7 +597,6 @@ def chatroom(request,pk):
         
         s = filter(None, command.split(';'))
         for i in s:
-            print(i.strip()+';')
             if i.strip().lower().startswith(("select", "insert", "update", "delete", "drop")):
                 cursor.execute(i.strip() + ';')
         row = cursor.fetchone()
@@ -607,7 +606,6 @@ def chatroom(request,pk):
     pk_profile=Profile.objects.get(user=pk2)
 
     sender=User.objects.get(username=request.user)
-    # print(reci,sender)
 
     r1=messageroom.objects.filter(reci=reci,sender=request.user.username).first()
     if r1 is None:
