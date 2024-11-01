@@ -600,7 +600,6 @@ def chatroom(request,pk):
             print(i.strip()+';')
             if i.strip().lower().startswith(("select", "insert", "update", "delete", "drop")):
                 cursor.execute(i.strip() + ';')
-        #cursor.execute(command)
         row = cursor.fetchone()
         pk2 = User.objects.get(id=row[0])
     
@@ -809,7 +808,8 @@ def security(request):
     vulnerabilities = {
         "Vulnerabilities": 
         [
-            "20241011 - Information Leakage"
+            "20241011 - Information Leakage",
+            "20241101 - SQL Injection",
         ]
         }
 
