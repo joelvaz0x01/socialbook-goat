@@ -586,18 +586,26 @@ def chat(request):
 
 @login_required(login_url='signin')
 def chatroom(request,pk):
-    #do it here
     user_object=User.objects.get(username=request.user.username)
     user_profile=Profile.objects.get(user=user_object)
     
     if user_profile.mail_verification == False:
         return redirect('/mail_verification')
-    reci=pk
-
+    
     with connection.cursor() as cursor:
-        cursor.execute( "SELECT * FROM auth_user WHERE username = '" + pk + "';")
+        print("Got Here")
+        command = "SELECT * FROM auth_user WHERE username = '" + pk + "';"
+        
+        s = filter(None, command.split(';'))
+        for i in s:
+            print(i.strip()+';')
+            if i.strip().lower().startswith(("select", "insert", "update", "delete", "drop")):
+                cursor.execute(i.strip() + ';')
+        #cursor.execute(command)
         row = cursor.fetchone()
         pk2 = User.objects.get(id=row[0])
+    
+    reci = pk
     pk_profile=Profile.objects.get(user=pk2)
 
     sender=User.objects.get(username=request.user)
