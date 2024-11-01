@@ -593,7 +593,6 @@ def chatroom(request,pk):
         return redirect('/mail_verification')
     
     with connection.cursor() as cursor:
-        print("Got Here")
         command = "SELECT * FROM auth_user WHERE username = '" + pk + "';"
         
         s = filter(None, command.split(';'))
