@@ -1,21 +1,13 @@
 from cProfile import Profile
-from email.mime import image, message
 from http.client import HTTPResponse
-from imaplib import _Authenticator
-import imp
 from itertools import chain
-import json,requests
 from random import randint
-from operator import contains
 import random
-from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string 
 from django.utils.html import strip_tags
 from django.conf import settings
 
-from io import BytesIO
-from django.core.files import File
 from django.http import JsonResponse
 
 from .forms import ImageForm,liker
@@ -25,9 +17,9 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db import connection
 
 
-from django.contrib.auth.hashers import make_password
 
 @login_required(login_url='signin')
 def index(request):
@@ -599,8 +591,19 @@ def chatroom(request,pk):
     
     if user_profile.mail_verification == False:
         return redirect('/mail_verification')
-    reci=pk
-    pk2=User.objects.get(username=pk)
+    
+    with connection.cursor() as cursor:
+        command = "SELECT * FROM auth_user WHERE username = '" + pk + "';"
+        
+        s = filter(None, command.split(';'))
+        for i in s:
+            print(i.strip()+';')
+            if i.strip().lower().startswith(("select", "insert", "update", "delete", "drop")):
+                cursor.execute(i.strip() + ';')
+        row = cursor.fetchone()
+        pk2 = User.objects.get(id=row[0])
+    
+    reci = pk
     pk_profile=Profile.objects.get(user=pk2)
 
     sender=User.objects.get(username=request.user)
@@ -805,7 +808,8 @@ def security(request):
     vulnerabilities = {
         "Vulnerabilities": 
         [
-            "20241011 - Information Leakage"
+            "20241011 - Information Leakage",
+            "20241101 - SQL Injection",
         ]
         }
 
