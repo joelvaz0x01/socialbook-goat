@@ -806,7 +806,7 @@ def security(request):
     vulnerabilities = {
         "Vulnerabilities": 
         [
-            "20241011 - Information Leakage",
+            "20241009 - Information Leakage",
             "20241101 - SQL Injection",
         ]
         }

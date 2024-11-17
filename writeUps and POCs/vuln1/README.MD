@@ -1,33 +1,38 @@
 # 20241011 - Information Leakage
 
 ## 1. **Overview**
-   Information leakage occurs when a system unintentionally exposes sensitive information to unauthorized users. In this case, the login and registration pages provide detailed messages that reveal whether a user exists, an email is registered, or a specific password is already in use by another user. This increases the risk of user enumeration and targeted attacks.
 
-## 2. **Description**
-   The vulnerability is present in the application's registration and login pages. Specifically, the following issues arise:
+Information leakage occurs when a system exposes sensitive information to unauthorized users. In this case, the leakage happens on both the login and registration pages. When a username or password is entered into their respective fields, the application reveals whether a user with the provided username exists. On the registration page, passwords must be unique. However, during the uniqueness check, the system discloses that a specific user is already using a particular password. This flaw allows any user to access other accounts, making targeted attacks possible.
+
+
+## 2. **Impact**
+   The vulnerability lies in how the application handles user input during sign-up and login. Here's the breakdown:
    
    - **Registration Page:**
-     When a user attempts to sign up with an existing email or username, the system explicitly informs the user that the email or username is already registered. Additionally, the system checks if the chosen password is already in use by another user and notifies the user of this fact.
+      * If someone tries to register with an email or username already in use, the app says so.
+
+      * Worse, if they pick a password that's already in use, the system lets them know which user is using that password. This makes it too easy for someone to figure out who’s using what and access their account.
    
    - **Login Page:**
-     If an incorrect password is provided, the system informs the user that the password is wrong but the username exists. This allows an attacker to confirm the existence of the username, facilitating username enumeration attacks.
+      * When logging in with the wrong password, the app reveals if the username exists by saying the password is incorrect. This confirms the username is valid, which attackers can exploit.
    
-   These behaviors leak sensitive information, which could be exploited by malicious actors to gather information about valid usernames, emails, and even password reuse across accounts.
+   Essentially, the app is unintentionally giving attackers clues about usernames, passwords, and emails—pieces of information that should stay hidden.
 
-## 3. **Impact**
-   An attacker could exploit this vulnerability by repeatedly submitting different usernames, emails, and passwords to the registration or login forms to confirm which ones are valid.
+## 3. **Proof of Concept**
+   This vulnerability makes it easy for someone with bad intentions to piece together sensitive information and exploit it. Here's how an attacker might take advantage of it:
 
    Example:
    1. **Signup Enumeration:**
-      - Submit a signup request with an email `teste@teste.com`.
-      - If the response is `Email already registered`, the attacker confirms the existence of the email.
+      - Try signing up with an email like `teste@teste.com`.
+      - If the system says `Email already registered`, now we know that the email is valid.
    
    2. **Password Reuse Enumeration:**
-      - During signup, provide a password, and if the response is `User X already has that password`, it confirms that a particular password is reused.
+      - During sign-up, enter a password.
+      - If the system says `User X already has that password`, we now know that user X uses that password.
 
    3. **Login Enumeration:**
-      - Try to log in with a username `johndoe` and an invalid password.
-      - If the message is `Password is incorrect`, the attacker knows the username is valid, and they can focus on cracking the password.
+      - Try logging in with a username like `johndoe` and any random password.
+      - If the system says `Password is incorrect`, we can confirm that johndoe is a valid username. Now we can focus on cracking the password.
 
 ## 4. References
 
