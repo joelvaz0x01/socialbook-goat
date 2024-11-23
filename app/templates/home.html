@@ -16,9 +16,9 @@
     <link rel="icon" type="image/png" href="/static/logo.png" sizes="96x96">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script>
-   
-  </script>
+ 
+  <!-- {% load static %} -->
+  <!-- <script src="{% static 'teste.js' %}"></script> -->
   </head>
   <style>
     body,.farmm{
@@ -738,8 +738,7 @@ body{
   
 </div>
 </div>
-
-<p class="card-text caption">{{post.caption}}</p>
+  <p class="card-text caption">{{post.caption | safe }}</p>
 {% if post.image %}
 <div class="" style="padding: 15px;padding-top:0;padding-bottom: 0;">
 
