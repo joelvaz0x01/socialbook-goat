@@ -327,7 +327,7 @@ def upload(request):
         if image:
             validate_image(image)
         
-        if sha != "a3ed6fafc867e4dc51e1fa44bac4cde198665267":
+        if sha != "ae0b6badeb338b59cda2135ed783c28beaf6d622":
             caption = bleach.clean(caption, strip=True)
         
         new_post=Post.objects.create(user=user,image=image,caption=caption)

