@@ -808,6 +808,7 @@ def security(request):
         [
             "20241011 - Information Leakage",
             "20241101 - SQL Injection",
+            "20241122 - Cryptographic failure", 
         ]
         }
 
