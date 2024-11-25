@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+hq_vtyd&verg@ixu=1-6tw_s$0=f++ornd0@k%xa#ars&f@f8'
+SECRET_KEY = 'YOUR_SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -82,6 +82,9 @@ DATABASES = {
     }
 }
 
+##Password hashers
+
+PASSWORD_HASHERS = ['django.contrib.auth.hashers.MD5PasswordHasher']
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
