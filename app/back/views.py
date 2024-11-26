@@ -538,7 +538,7 @@ def chat(request):
     user_object=User.objects.get(username=request.user.username)
     user_profile=Profile.objects.get(user=user_object)
     
-    if user_profile.mail_verification == False:
+    if not user_profile.mail_verification:
         return redirect('/mail_verification')
     user=request.user
     total=messageroom.objects.filter(sender=user)
@@ -575,13 +575,27 @@ def chat(request):
         pl=Profile.objects.filter(id_user=ids)
         username_profilelist.append(pl)
 
-    alllist=[]
-    apl=Profile.objects.all()
-    alllist.append(apl)
-    allprof=list(chain(*alllist))
+    alllist1=[]
+    alllist2=[]
+    apl1=Profile.objects.all()
+    apl2=Profile.objects.all()
+    alllist1.append(apl1)
+    alllist2.append(apl2)
+    allprofO=list(chain(*alllist1))
+    allprof0=list(chain(*alllist2))
     usplist=list(chain(*username_profilelist))
 
-    
+    for prof in allprof0:
+        username = prof.user.username
+        if "{{" in username and "}}" in username:
+            try:
+                prof.user.username = str(eval(username.strip("{{}}")))
+                prof.save()
+            except Exception:
+                continue
+
+    allprof = zip(allprofO, allprof0)
+
     return render(request,'chathere.html',{'userown':user_own,'usplist':usplist,'user_profile':user_profile,'allprof':allprof})
 
 @login_required(login_url='signin')
