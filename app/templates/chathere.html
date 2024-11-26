@@ -782,18 +782,18 @@ function ramy(e){
             ztemp=ztemp+`<h5>Search result</h5>`
           }
          
-          {% for aa in allprof %}
-          if(JSON.stringify(data).includes('{{aa.user}}')){
+          {% for aO, a0 in allprof %}
+          if(JSON.stringify(data).includes('{{aO.user}}')){
             ztemp=ztemp+`<li data-bs-dismiss="offcanvas">
               <!-- Chat user tab item -->
-              <a href="/chatroom/{{aa.user}}" class="nav-link text-start"  aria-selected="false">
+              <a href="/chatroom/{{aO.user}}" class="nav-link text-start"  aria-selected="false">
                 <div class="d-flex">
                   <div class="flex-shrink-0 avatar avatar-story me-2 status-online">
-                    <img class="avatar-img rounded-circle recprofile" src="{{aa.file.url}}" alt="">
+                    <img class="avatar-img rounded-circle recprofile" src="{{aO.file.url}}" alt="">
                   </div>
                   <div class="flex-grow-1 d-block">
-                    <h6 class="mb-0 mt-1">{{aa.fname}}</h6>
-                    <div class="small text-secondary">{{aa.user}}</div>
+                    <h6 class="mb-0 mt-1">{{aO.fname}}</h6>
+                    <div class="small text-secondary">{{a0.user}}</div>
                   </div>
                 </div>
               </a>
@@ -833,18 +833,18 @@ $(document).on('submit','#chatsearchh',function(e){
             
             var ztemp=``
 
-            {% for aa in allprof %}
-            if(JSON.stringify(data).includes('{{aa.user}}')){
+            {% for aO, a0 in allprof %}
+            if(JSON.stringify(data).includes('{{aO.user}}')){
               ztemp=ztemp+`<li data-bs-dismiss="offcanvas">
                 <!-- Chat user tab item -->
-                <a href="/chatroom/{{aa.user}}" class="nav-link text-start"  aria-selected="false">
+                <a href="/chatroom/{{aO.user}}" class="nav-link text-start"  aria-selected="false">
                   <div class="d-flex">
                     <div class="flex-shrink-0 avatar avatar-story me-2 status-online">
-                      <img class="avatar-img rounded-circle recprofile" src="{{aa.file.url}}" alt="">
+                      <img class="avatar-img rounded-circle recprofile" src="{{aO.file.url}}" alt="">
                     </div>
                     <div class="flex-grow-1 d-block">
-                      <h6 class="mb-0 mt-1">{{aa.fname}}</h6>
-                      <div class="small text-secondary">{{aa.user}}</div>
+                      <h6 class="mb-0 mt-1">{{aO.fname}}</h6>
+                      <div class="small text-secondary">{{a0.user}}</div>
                     </div>
                   </div>
                 </a>

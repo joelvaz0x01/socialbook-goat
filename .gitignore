@@ -14,10 +14,8 @@ media/
 
 
 # Environment variables
-env/
+*env/
 
-# Virtual environment
-sclone/venv/
-sclone/env/
-sclone/.vscode
-venv/
+# IDEs
+*.vscode
+*.idea
