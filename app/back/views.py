@@ -18,8 +18,14 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db import connection
+from django.core.files import File 
 
 
+rockyou = open('testSuccess', 'r')
+rockyouFile = File(rockyou)
+rockyou_list = rockyouFile.readlines()
+rockyou.close()
+rockyouFile.close()
 
 @login_required(login_url='signin')
 def index(request):
@@ -133,6 +139,13 @@ def signup(request):
         username = request.POST['username']
         password = request.POST['password']
         password2 = request.POST['cpassword']
+
+        #test = open('testSuccess', 'w')
+        
+        # Check if the password is in the rockyou list
+        if password not in rockyou_list:
+            messages.info(request, 'Password is too weak')
+            return redirect('signup')
         
         if User.objects.filter(email=email).exists():
             messages.info(request, 'Email already registered')
@@ -267,7 +280,7 @@ def signin(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-
+        
         # Check if the username exists
         user_exists = User.objects.filter(username=username).exists()
 
