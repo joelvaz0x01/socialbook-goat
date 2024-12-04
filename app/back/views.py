@@ -21,11 +21,11 @@ from django.db import connection
 from django.core.files import File 
 
 
-rockyou = open('testSuccess', 'r')
-rockyouFile = File(rockyou)
-rockyou_list = rockyouFile.readlines()
-rockyou.close()
-rockyouFile.close()
+wordlist = open('wordlist', 'r')
+wordlistFile = File(wordlist)
+wordlist_list = [line.strip() for line in wordlistFile.readlines()]
+wordlist.close()
+wordlistFile.close()
 
 @login_required(login_url='signin')
 def index(request):
@@ -139,11 +139,11 @@ def signup(request):
         username = request.POST['username']
         password = request.POST['password']
         password2 = request.POST['cpassword']
-
-        #test = open('testSuccess', 'w')
         
         # Check if the password is in the rockyou list
-        if password not in rockyou_list:
+        print("SuperHere")
+        print(wordlist_list)
+        if password not in wordlist_list:
             messages.info(request, 'Password is too weak')
             return redirect('signup')
         
