@@ -837,6 +837,7 @@ def security(request):
             "20241101 - SQL Injection",
             "20241122 - Cryptographic failure",
             "20241126 - Server Side Template Injection",
+            "20241205 - Identification and Authentication Failures"
         ]
         }
 
