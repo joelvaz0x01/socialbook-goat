@@ -18,8 +18,14 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db import connection
+from django.core.files import File 
 
 
+wordlist = open('wordlist', 'r')
+wordlistFile = File(wordlist)
+wordlist_list = [line.strip() for line in wordlistFile.readlines()]
+wordlist.close()
+wordlistFile.close()
 
 @login_required(login_url='signin')
 def index(request):
@@ -133,6 +139,11 @@ def signup(request):
         username = request.POST['username']
         password = request.POST['password']
         password2 = request.POST['cpassword']
+        
+        # Check if the password is in the wordlist
+        if password not in wordlist_list:
+            messages.info(request, 'Password is too weak')
+            return redirect('signup')
         
         if User.objects.filter(email=email).exists():
             messages.info(request, 'Email already registered')
@@ -267,7 +278,7 @@ def signin(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-
+        
         # Check if the username exists
         user_exists = User.objects.filter(username=username).exists()
 
@@ -824,6 +835,7 @@ def security(request):
             "20241101 - SQL Injection",
             "20241122 - Cryptographic failure",
             "20241126 - Server Side Template Injection",
+            "20241205 - Identification and Authentication Failures"
         ]
         }
 

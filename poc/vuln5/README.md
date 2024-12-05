@@ -7,7 +7,7 @@ Cryptographic failure consists on the improper use of cryptographic functions an
 
 ## 2. **Description**
 
-Two critical cryptographic implementation failures were implemented in the application authentication and session management. These weakness result from the use of deprecated hashing algorithms and weak secret key implementations.
+Two critical cryptographic implementation failures were implemented in the application authentication and session management. These weaknesses result from the use of deprecated hashing algorithms and weak secret key implementations.
 
 For the hashing of the plaintext passwords of the users is being used MD5, a cryptographically broken algorithm that is also susceptible to collision attacks (application authentication failure).
 
