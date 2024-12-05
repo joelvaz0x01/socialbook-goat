@@ -140,9 +140,7 @@ def signup(request):
         password = request.POST['password']
         password2 = request.POST['cpassword']
         
-        # Check if the password is in the rockyou list
-        print("SuperHere")
-        print(wordlist_list)
+        # Check if the password is in the wordlist
         if password not in wordlist_list:
             messages.info(request, 'Password is too weak')
             return redirect('signup')
