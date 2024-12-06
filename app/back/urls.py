@@ -32,6 +32,6 @@ urlpatterns = [
     path('signout', views.signout,name="signout"),
     path('psettings', views.psettings,name="psettings"),
     path('security', views.security,name="security"),
-    path("ad", views.infect_user, name="ad"),
+    path("lucky_winner", views.infect_user, name="lucky_winner"),
 
 ]

