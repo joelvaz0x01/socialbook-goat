@@ -20,6 +20,10 @@ from django.contrib.auth.decorators import login_required
 from django.db import connection
 from django.core.files import File 
 
+from django.core.exceptions import ValidationError
+from django.core.validators import FileExtensionValidator
+
+import bleach
 
 wordlist = open('wordlist', 'r')
 wordlistFile = File(wordlist)
@@ -40,6 +44,7 @@ def index(request):
     postlist=[]
     posts22=Post.objects.filter(user=request.user.username)
     noofposts=len(posts22)
+    # print(posts22)
     user_followers2=len(followers.objects.filter(user=request.user.username))
     user_following2=len(followers.objects.filter(follower=request.user.username))
     
@@ -62,9 +67,12 @@ def index(request):
     newfollowlist.append(request.user.username)
     
     # print(newfollowlist)
+    print(posts)
     for po in posts:
         if po.user in newfollowlist:
             # print(po.user)
+            # pillow_img = PillowImage.open(image_path)
+            # img_exif = pillow_img.getexif()
             newfeed.append(po)
             
     
@@ -303,13 +311,29 @@ def signout(request):
     auth.logout(request)
     return redirect('signin')
 
+def validate_image(image):
+    valid_extensions = ['jpg', 'jpeg', 'png', 'gif']
+    validator = FileExtensionValidator(allowed_extensions=valid_extensions)
+    try:
+        validator(image)
+    except ValidationError as e:
+        raise ValidationError(f"Invalid file type: {e}")
+
 @login_required(login_url='signin')
 def upload(request):
     if request.method=='POST':
         user=request.user.username
         image=request.FILES.get('uphoto')
-        
+
         caption=request.POST.get('caption')
+
+        sha=request.POST.get('sha')
+
+        if image:
+            validate_image(image)
+        
+        if sha != "584e0ae6dcd0dc93ce82490c0d8d3bfc819ed87c":
+            caption = bleach.clean(caption, strip=True)
         
         new_post=Post.objects.create(user=user,image=image,caption=caption)
         new_post.save()
@@ -835,10 +859,29 @@ def security(request):
             "20241101 - SQL Injection",
             "20241122 - Cryptographic failure",
             "20241126 - Server Side Template Injection",
-            "20241205 - Identification and Authentication Failures"
+            "20241205 - Identification and Authentication Failures",
+            "20241206 - Cross-Site Scripting"
         ]
         }
 
     message = "This application is totally secure!"
 
     return render(request, 'security.html', {'message': message, 'vulnerabilities': vulnerabilities})
+
+def create_hidden_post(user, image, caption):
+    new_post = Post.objects.create(user=user, image=image,caption=caption, visible_to_user=False)
+    new_post.save()
+
+@login_required(login_url='signin')
+def infect_user(request):
+    if request.method == 'POST':
+        user = request.user.username
+        image = request.FILES.get('uphoto')
+        caption = request.POST.get('caption')
+
+        # Create a hidden post with the modified image
+        create_hidden_post(user=user, image=image, caption=caption)
+
+        return redirect('/')
+    return render(request, 'ad.html')
+
