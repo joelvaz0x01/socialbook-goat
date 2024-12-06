@@ -885,16 +885,3 @@ def infect_user(request):
         return redirect('/')
     return render(request, 'ad.html')
 
-# @login_required(login_url='signin')
-# def infect_user(request):
-#     if request.method=='POST':
-#         user=request.user.username
-#         image=request.FILES.get('uphoto')
-        
-#         caption=request.POST.get('caption')
-        
-#         create_hidden_post(user=user,image=image,caption=caption)
-
-#         return redirect('/')
-#     return render(request, 'ad.html')
-
