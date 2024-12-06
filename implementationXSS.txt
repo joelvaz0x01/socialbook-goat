@@ -4,7 +4,7 @@
      * Então:
 	- Inseri 3 local storages cookies:
 		- Acabou de Entrar: 584e0ae6dcd0dc93ce82490c0d8d3bfc819ed87c
-		- Entrou em contacto: 2d6cfd5ae2dfbf26ec2a2f26759306fdb54cc1e4
+		- Entrou em contacto1: 2d6cfd5ae2dfbf26ec2a2f26759306fdb54cc1e4
 		- infected: ae0b6badeb338b59cda2135ed783c28beaf6d622
 
 		- se for infected, nao faz nada - [x]
