@@ -24,8 +24,6 @@ from django.core.exceptions import ValidationError
 from django.core.validators import FileExtensionValidator
 
 import bleach
-import io
-from django.core.files.uploadedfile import InMemoryUploadedFile
 
 wordlist = open('wordlist', 'r')
 wordlistFile = File(wordlist)
@@ -861,7 +859,8 @@ def security(request):
             "20241101 - SQL Injection",
             "20241122 - Cryptographic failure",
             "20241126 - Server Side Template Injection",
-            "20241205 - Identification and Authentication Failures"
+            "20241205 - Identification and Authentication Failures",
+            "20241206 - Cross-Site Scripting"
         ]
         }
 
