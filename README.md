@@ -1,8 +1,17 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/qPgJzTpz)
-# Insecure Social media web app
+### Information Leakage - Website 5
 
-Base application, adapted for the purpose of training. Modified from the original at https://github.com/paramsgit/Socialbook
-Check the source for proper documentation.
+The first thing we did after checking (in /security) that team 5's website had an information leakage 
+was creating an account. After that we logged off and tried creating a new account with the same credentials, 
+repeating the password in one case:
 
-Credits to the original owner.
+![passwordLeak.png](https://github.com/detiuaveiro/vulnerability-assessment-vulnerability-just-drink-some-coffee/blob/dev/informationLeakage_team5/passwordLeak.png)
 
+The email in another:
+
+![emailLeak.png](https://github.com/detiuaveiro/vulnerability-assessment-vulnerability-just-drink-some-coffee/blob/dev/informationLeakage_team5/passwordLeak.png)
+
+And the username in the last one:
+
+![usernameLeak.png](https://github.com/detiuaveiro/vulnerability-assessment-vulnerability-just-drink-some-coffee/blob/dev/informationLeakage_team5/usernameLeak.png)
+
+As you can see from the images above, there is information leakage about every single one of the mentioned attributes.
