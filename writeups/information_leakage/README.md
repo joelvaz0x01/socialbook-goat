@@ -1,4 +1,5 @@
-### Information Leakage - Website 5
+# Vulnerability: Information Leakage
+## Machine: 5
 
 The first thing we did after checking (in /security) that team 5's website had an information leakage 
 was creating an account. After that we logged off and tried creating a new account with the same credentials, 
