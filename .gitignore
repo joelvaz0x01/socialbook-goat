@@ -11,10 +11,8 @@ local_settings.py
 db.sqlite3
 media/
 
-
-
 # Environment variables
-*env/
+.venv/
 
 # IDEs
 *.vscode
