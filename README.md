@@ -31,11 +31,11 @@ Credits to the original owner.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/joelvaz0x01/unsecure-socialbook-goat.git
+   git clone https://github.com/joelvaz0x01/socialbook-goat.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd unsecure-socialbook-goat/app
+   cd socialbook-goat/app
    ```
 3. Create a virtual environment and activate it:
    ```bash
